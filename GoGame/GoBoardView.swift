@@ -42,7 +42,7 @@ class GoBoardView: UIView {
         for(var i = 0; i <= 2; i++){
             for(var j = 0; j <= 2; j++){
                 CGContextBeginPath(ctx)
-                CGContextAddArc(ctx, (CGFloat(1+3+6*i))*space ,CGFloat(1+3+6*j)*space, 2, 0, CGFloat(2.0*M_PI), 1)
+                CGContextAddArc(ctx, (CGFloat(1+3+6*i))*space ,CGFloat(1+3+6*j)*space + oY, 2, 0, CGFloat(2.0*M_PI), 1)
                 CGContextStrokePath(ctx)
             }
         }

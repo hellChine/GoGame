@@ -11,7 +11,7 @@ import UIKit
 class GameViewController: UIViewController {
 
     var goBoard = GoBoardView()
-    
+    var _game: CelebrityGameInfo = CelebrityGameInfo()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -21,8 +21,23 @@ class GameViewController: UIViewController {
         goBoard.frame = CGRectMake(10, 20, KcontrolWidth - 20 , KcontrolHeight - 40)
         self.view.addSubview(goBoard)
         
+        if let filePath = NSBundle.mainBundle().pathForResource("001", ofType: "sgf"){
+            do{
+                let kifu = try NSString(contentsOfFile: filePath, encoding: NSUTF8StringEncoding)
+                _game = GGParser().parse(kifu as String)
+                showMoves()
+            }
+            catch{}
+        }
+        
     }
-
+    
+    func showMoves(){
+        if _game.allMoves.count > 0 {
+            
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
